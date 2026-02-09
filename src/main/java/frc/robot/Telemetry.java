@@ -7,6 +7,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.networktables.BooleanPublisher;
 import edu.wpi.first.networktables.DoubleArrayPublisher;
 import edu.wpi.first.networktables.DoublePublisher;
 import edu.wpi.first.networktables.NetworkTable;
@@ -19,6 +20,8 @@ import edu.wpi.first.wpilibj.smartdashboard.MechanismLigament2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj.util.Color8Bit;
+import com.pathplanner.lib.auto.AutoBuilder;
+
 
 public class Telemetry {
     private final double MaxSpeed;
@@ -50,6 +53,8 @@ public class Telemetry {
     private final StructArrayPublisher<SwerveModulePosition> driveModulePositions = driveStateTable.getStructArrayTopic("ModulePositions", SwerveModulePosition.struct).publish();
     private final DoublePublisher driveTimestamp = driveStateTable.getDoubleTopic("Timestamp").publish();
     private final DoublePublisher driveOdometryFrequency = driveStateTable.getDoubleTopic("OdometryFrequency").publish();
+    private final BooleanPublisher AutobuilderConfigured = driveStateTable.getBooleanTopic("AutobuilderConfigured").publish();
+    private final StringPublisher command = driveStateTable.getStringTopic("CurrentCommand").publish();
 
     /* Robot pose for field positioning */
     private final NetworkTable table = inst.getTable("Pose");
@@ -94,6 +99,8 @@ public class Telemetry {
         driveModulePositions.set(state.ModulePositions);
         driveTimestamp.set(state.Timestamp);
         driveOdometryFrequency.set(1.0 / state.OdometryPeriod);
+        AutobuilderConfigured.set(AutoBuilder.isPathfindingConfigured());
+        command.set(RobotContainer.ctr.drivetrain.getCurrentCommand().getName());
 
         /* Also write to log file */
         SignalLogger.writeStruct("DriveState/Pose", Pose2d.struct, state.Pose);
@@ -102,6 +109,8 @@ public class Telemetry {
         SignalLogger.writeStructArray("DriveState/ModuleTargets", SwerveModuleState.struct, state.ModuleTargets);
         SignalLogger.writeStructArray("DriveState/ModulePositions", SwerveModulePosition.struct, state.ModulePositions);
         SignalLogger.writeDouble("DriveState/OdometryPeriod", state.OdometryPeriod, "seconds");
+
+        SignalLogger.writeBoolean("isAutoBuilderConfigured", AutoBuilder.isConfigured());
 
         /* Telemeterize the pose to a Field2d */
         fieldTypePub.set("Field2d");
