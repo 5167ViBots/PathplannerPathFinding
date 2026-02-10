@@ -98,9 +98,9 @@ public class RobotContainer {
         drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
             drivetrain.applyRequest(() ->
-                drive.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with negative Y (forward)
-                    .withDeadband(.10)
-                    .withVelocityY(-joystick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
+                drive.withVelocityX(0) // Drive forward with negative Y (forward)
+                    .withDeadband(.20)
+                    .withVelocityY(0) // Drive left with negative X (left)
                     .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
             )
         );
@@ -131,19 +131,141 @@ public class RobotContainer {
         drivetrain.registerTelemetry(logger::telemeterize);
 
 
-        double x = 80;
-        double y = 20;
-        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
-        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
-        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
-        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
-        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
-        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
-        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
-        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
-        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
-        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
-        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        double x = 8;
+        double y = 2;
+        while(drivetrain.getState().Pose.getMeasureX().baseUnitMagnitude() <= 8.0)
+            drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());        drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
+        // drivetrain.addVisionMeasurement(new Pose2d(x,y,new Rotation2d(0)),Timer.getFPGATimestamp());
 
 
 
@@ -162,7 +284,7 @@ public class RobotContainer {
         // Since we are using a holonomic drivetrain, the rotation component of this pose
         // represents the goal holonomic rotation
 
-        Pose2d targetPose = new Pose2d(0,1, Rotation2d.fromDegrees(0));
+        Pose2d targetPose = new Pose2d(8,2, Rotation2d.fromDegrees(180));
 
         // Create the constraints to use while pathfinding
         PathConstraints constraints = new PathConstraints(
