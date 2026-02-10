@@ -101,7 +101,7 @@ public class RobotContainer {
                 drive.withVelocityX(0) // Drive forward with negative Y (forward)
                     .withDeadband(.20)
                     .withVelocityY(0) // Drive left with negative X (left)
-                    .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with negative X (left)
+                    .withRotationalRate(0) // Drive counterclockwise with negative X (left)
             )
         );
 
@@ -284,7 +284,19 @@ public class RobotContainer {
         // Since we are using a holonomic drivetrain, the rotation component of this pose
         // represents the goal holonomic rotation
 
-        Pose2d targetPose = new Pose2d(8,2, Rotation2d.fromDegrees(180));
+        Command pathfindingCommand = getPathfindingCommand(8,2);
+        Command pathfindingCommand2 = getPathfindingCommand(10,2);
+
+        
+
+
+        //joystick.povRight().whileTrue(getPathfindingCommand(10.85,7.4));
+        joystick.povDown().whileTrue(pathfindingCommand);
+        /joystick.povUp().whileTrue(pathfindingCommand2);
+    }
+
+    private Command getPathfindingCommand(double x, double y) {
+        Pose2d targetPose = new Pose2d(x,y, Rotation2d.fromDegrees(0));
 
         // Create the constraints to use while pathfinding
         PathConstraints constraints = new PathConstraints(
@@ -297,12 +309,10 @@ public class RobotContainer {
                 constraints,
                 0.0 // Goal end velocity in meters/sec
         );
-
-
-        joystick.povDown().whileTrue(pathfindingCommand);
+        return pathfindingCommand;
     }
 
-
+//80 inches, 30 inches
 
 
 
